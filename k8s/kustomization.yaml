@@ -8,4 +8,4 @@ namespace: hello-gitops
 images:
 - name: hello-gitops
   newName: shevdan/hello-gitops
-  newTag: d5dda2fa51e7f9ff92f08a680a47b5f4dfff6e4f
+  newTag: 5c83cd93bd72fcd339ca94b40212607226da1139
