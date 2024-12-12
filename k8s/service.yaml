@@ -12,5 +12,5 @@ spec:
       targetPort: http
   selector:
     app: hello-gitops
-    environment: blue
+    environment: python-app-green
   type: ClusterIP
