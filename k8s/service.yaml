@@ -4,6 +4,7 @@ metadata:
   labels:
     app: hello-gitops
   name: hello-gitops
+  namespace: shared-namespace
 spec:
   ports:
     - name: http
