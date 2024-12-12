@@ -134,6 +134,7 @@ jobs:
       run: |
        cd k8s
        kustomize edit set image hello-gitops=$DOCKER_USERNAME/hello-gitops:$GITHUB_SHA
+       sed -i "s/environment:.*/environment: ${NEW_NAMESPACE#*-}/" deployment.yaml
        cat kustomization.yaml
     
     - name: Deploy updated Kubernetes resources
