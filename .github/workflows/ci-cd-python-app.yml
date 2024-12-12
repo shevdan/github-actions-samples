@@ -93,6 +93,12 @@ jobs:
     
     - name: Update kubeconfig for EKS
       run: aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name hello-gitops
+    
+    - name: Create Shared Namespace
+      run: |
+        if ! kubectl get namespace shared-namespace; then
+          kubectl create namespace shared-namespace
+        fi
 
     - name: Setup Kustomize
       uses: imranismail/setup-kustomize@v1
@@ -145,7 +151,7 @@ jobs:
     
     - name: Switch Traffic to New Environment
       run: |
-        kubectl patch service hello-gitops-service \
+        kubectl patch service hello-gitops \
           -n shared-namespace \
           -p '{"spec":{"selector":{"app":"hello-gitops","environment":"${{ env.NEW_NAMESPACE }}"}}}'
 
