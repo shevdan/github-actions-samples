@@ -3,8 +3,8 @@ kind: Kustomization
 resources:
 - deployment.yaml
 - ingress.yaml
-namespace: python-app-green
+namespace: python-app-blue
 images:
 - name: hello-gitops
   newName: shevdan/hello-gitops
-  newTag: 148e3cdc5f6a8c41348fc0afaa4cbbfa9e9f1ea5
+  newTag: 582d4750c9d144e890a8d9cac0dc0112772b0c05
