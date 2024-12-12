@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   labels:
     app: hello-gitops
-    environment: app-blue
+    environment: python-app-green
   name: hello-gitops
 spec:
   replicas: 5
   selector:
     matchLabels:
       app: hello-gitops
-      environment: app-blue
+      environment: python-app-green
   template:
     metadata:
       labels:
         app: hello-gitops
-        environment: app-blue
+        environment: python-app-green
     spec:
       containers:
         - image: hello-gitops
