@@ -142,6 +142,13 @@ jobs:
     - name: Wait for Deployment to Stabilize
       run: |
         kubectl rollout status deployment/hello-gitops -n ${{ env.NEW_NAMESPACE }}
+    
+    - name: Switch Traffic to New Environment
+      run: |
+        kubectl patch service hello-gitops-service \
+          -n shared-namespace \
+          -p '{"spec":{"selector":{"app":"hello-gitops","environment":"${{ env.NEW_NAMESPACE }}"}}}'
+
 
     # REMOVE OLD DEPLOYMENT!!
     - name: Remove old namespace
